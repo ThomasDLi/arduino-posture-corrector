@@ -15,10 +15,8 @@
 SharpIR SharpIR1(ir, model);  // middle sensor
 SharpIR SharpIR2(irb, model); // lower sensor
 SharpIR SharpIR3(irq, model); // upper sensor
-Button button1(12);
 void setup() {
   Serial.begin(9600);
-  button1.begin();
 }
 void loop() {
   delay(500);   
