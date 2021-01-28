@@ -1,6 +1,5 @@
 #include <SharpIR.h>
 #include <math.h>
-#include <Button.h>
 
 // if you're using different pins than the ones shown here, change the pins.
 
