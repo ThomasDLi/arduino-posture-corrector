@@ -40,8 +40,8 @@ void loop() {
   Serial.print("Mean distance 3: ");
   Serial.println(dis2); 
   // end of debugging code
-  int x=190;
-  int ex=190; 
+  int x=190; //distance between bottom and middle sensor (keep both X and EX at 190 if you don't want to ajust code every time you switch a user since I found that 190 is a nice average that works for most people)
+  int ex=190; //distance between middle and top sensor
   // start of 2nd debugging code block
   Serial.println("lower back angle");
   float y=dis1 - dis;
