@@ -50,7 +50,7 @@ void loop() {
   Serial.println(anss * 100);
   // end of 2nd debugging code block
   
-  // change the ">9" and "< -6" to adjust the threshhold (how far you can lean without it beeping)
+  // change the ">9" and "< -6" to adjust the threshhold (how far you can lean/slouch without it beeping)
   if ((anss * 100) > 9 or (ans * 100) < -6){
     Serial.println("bad posture");
       tone(8, 440, 1000);
