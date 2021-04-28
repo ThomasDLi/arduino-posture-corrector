@@ -1,58 +1,57 @@
+//libaries
 #include <SharpIR.h>
 #include <math.h>
 
-// if you're using different pins than the ones shown here, change the pins.
+//pins
+#define topir A0
+#define middleir A3
+#define bottomir A5
 
-#define ir A0
-#define irb A5
+//model of sharpir
 #define model 20150
-#define irq A3
 // ir: the pin where your sensor is attached
 // model: an int that determines your sensor:  1080 for GP2Y0A21Y
 //                                            20150 for GP2Y0A02Y
 //                                            (working distance range according to the datasheets)
 
-SharpIR SharpIR1(ir, model);  // middle sensor
-SharpIR SharpIR2(irb, model); // lower sensor
-SharpIR SharpIR3(irq, model); // upper sensor
+//defining the sensors themselves withing the libarry
+SharpIR SharpIR1(topir, model);
+SharpIR SharpIR2(middleir, model);
+SharpIR SharpIR3(bottomir, model);
 void setup() {
+  //starting the serial
   Serial.begin(9600);
 }
+
 void loop() {
+  //something that the libary needs, idk what this does
   unsigned long pepe1=millis();
 
-  int dis=SharpIR1.distance();
-  int dis1=SharpIR2.distance();
-  int dis2=SharpIR3.distance();
+  //distance getting
+  int dis1=SharpIR1.distance();
+  int dis2=SharpIR2.distance();
+  int dis3=SharpIR3.distance();
 
-// start of debugging code. this was just code that I used while debugging the program. You can remove it if you want.
-  //Serial.print("Mean distance 1: ");
-  //Serial.println(dis); 
+  //distances between each sensor
+  int botmid = 190; //distance in mm between bottom sensor and middle sensor
+  int midtop = 190; //distance in mm between middle sensor and top sensor
 
-  //Serial.print("Mean distance 2: ");
-  //Serial.println(dis1); 
+  //upper back angle
+  float distancetop = dis1 - dis2;
+  float anglebeforetop = atan(distancetop / midtop);
+  float angletop = anglebeforetop * 100;
 
-  //Serial.print("Mean distance 3: ");
-  //Serial.println(dis2); 
-  // end of debugging code
-  int x=190; //distance between bottom and middle sensor (keep both X and EX at 190 if you don't want to ajust code every time you switch a user since I found that 190 is a nice average that works for most people)
-  int ex=190; //distance between middle and top sensor
-  // start of 2nd debugging code block
-  //Serial.println("lower back angle");
-  float y=dis1 - dis;
-  float ans=atan(y/x);
-  Serial.print(ans * 100);
-  Serial.print(",");
-  //Serial.println("upper back angle");
-  float ey=dis2 - dis;
-  float anss=atan(ey/ex);
-  Serial.println(anss * 100);
+  //lower back angle
+  float distancelow = dis2 - dis3;
+  float anglebeforelow = atan(distancelow / botmid);
+  float anglelow = anglebeforelow * 100;
+
+  //delay bcuz why not
   delay(100);
-  // end of 2nd debugging code block
-  
-  // change the ">9" and "< -6" to adjust the threshhold (how far you can lean without it beeping)
-  if ((anss * 100) > 9 or (ans * 100) < -6){
-    //Serial.println("bad posture");
-      tone(8, 440, 1000);
-}
+
+  //checking for bad posture
+  if (angletop > 9 or anglelow < -6){
+    //beeping the buzzer for one second if user has bad posturer
+    tone(8, 440, 1000);    
+    }
 }
