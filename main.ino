@@ -46,6 +46,18 @@ void loop() {
   float anglebeforelow = atan(distancelow / botmid);
   float anglelow = anglebeforelow * 100;
 
+  //This part will be useful if you ever decide to use the python GUI part of this project. This transfers data from the arduino to the serial port, to be picked up by pyserial.
+  Serial.print(dis1);
+  Serial.print(",");
+  Serial.print(dis2);
+  Serial.print(",");
+  Serial.print(dis3);
+  Serial.print(",");
+  Serial.print(angletop);
+  Serial.print(",");
+  Serial.print(anglelow);
+  Serial.println();
+
   //delay bcuz why not
   delay(100);
 
