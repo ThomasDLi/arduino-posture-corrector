@@ -23,6 +23,8 @@ If you have a buzzer, and want a buzzer:
 
 Next, download eiter **Main.ino** or **nobuzzer.ino**
 
-After you're done doing thhat, change the pins according to where you attach the sensors
+After you're done doing that, change the pins according to where you attach the sensors
 
-Finally, upload the code to your arduino, and download the **pythonpart.py** file if you want to see real-time graphics regarding your spine
+Now, upload the code to your arduino, and download the **pythonpart.py** file if you want to see real-time graphics regarding your spine
+
+Finally, mount the sensors to a pole, 19 cm apart (if you mount it a distance other than 19 cm apart, then edit the code in order to still make the measuremants precise)
