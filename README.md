@@ -28,3 +28,7 @@ After you're done doing that, change the pins according to where you attach the 
 Now, upload the code to your arduino, and download the **pythonpart.py** file if you want to see real-time graphics regarding your spine
 
 Finally, mount the sensors to a pole, 19 cm apart (if you mount it a distance other than 19 cm apart, then edit the code in order to still make the measuremants precise)
+
+Final product should look like this:
+
+![image](https://user-images.githubusercontent.com/77999105/125874797-90e48bc5-93c3-4b70-bfaa-c9dfce97e559.png)
