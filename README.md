@@ -1,5 +1,5 @@
  # arduino-posture-corrector
-the slightly messy Arduino code needed for Thomas Li's science fair Arduino posture corrector.
+the slightly messy Arduino code needed for Thomas Li's science fair Arduino posture corrector. I also have a paper written about this subject! https://www.researchgate.net/publication/353808215_Development_Of_An_Active_Posture_Improving_Mechanism
 
 
 ## what the files do
